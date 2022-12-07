@@ -22,7 +22,7 @@ io.on("connection", (socket) => {
 
   console.log(handshake);
 
-  socket.on("disconnect", function () {
+  socket.on("disconnect", () => {
     console.log("disconnect: ", socket.id);
     //socket.handshake.query = null;
   });

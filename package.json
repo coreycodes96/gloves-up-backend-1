@@ -7,24 +7,38 @@
   "scripts": {
     "devStart1": "nodemon server.ts --port 5000 --socketHost 8003",
     "devStart2": "nodemon server.ts --port 5001 --socketHost 8004",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --maxWorkers=1 --detectOpenHandles --forceExit"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.19.6",
+    "@babel/preset-env": "^7.20.2",
+    "axios": "^1.2.1",
+    "babel-jest": "^29.3.1",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
+    "expo-server-sdk": "^3.7.0",
     "express": "^4.18.2",
+    "jest": "^29.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb-memory-server": "^8.10.1",
     "mongoose": "^6.7.5",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.8.0",
     "nodemon": "^2.0.20",
     "socket.io": "^4.5.4",
+    "socket.io-client": "^4.5.4",
+    "supertest": "^6.3.2",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.3",
+    "zod": "^3.19.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
-    "@types/express": "^4.17.14"
+    "@types/express": "^4.17.14",
+    "@types/nodemailer": "^6.4.6"
   }
 }

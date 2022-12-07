@@ -11,10 +11,7 @@ const io = new Server(httpServer, {
   },
 });
 
-// //Connect to mongoDB database
-mongoose.connect(process.env.MONGODB_URL);
-
-// //Start socket.io
+//Start socket.io
 io.on("connection", (socket) => {
   const handshake = socket.handshake.query;
 

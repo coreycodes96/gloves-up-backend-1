@@ -1,6 +1,10 @@
 import { transport } from "./config.js";
 
-const activateAccountEmail = async (username, email, code) => {
+const activateAccountEmail = async (
+  username: string,
+  email: string,
+  code: number
+): Promise<void> => {
   const mailOptions = {
     from: "gloves-up-test@outlook.com",
     to: email,

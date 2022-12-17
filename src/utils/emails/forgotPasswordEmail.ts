@@ -1,6 +1,10 @@
 import { transport } from "./config.js";
 
-const forgotPasswordEmail = async (username, email, code) => {
+const forgotPasswordEmail = async (
+  username: string,
+  email: string,
+  code: number
+): Promise<void> => {
   const mailOptions = {
     from: "gloves-up-test@outlook.com",
     to: email,

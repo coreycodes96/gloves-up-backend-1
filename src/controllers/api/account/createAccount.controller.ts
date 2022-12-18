@@ -6,10 +6,7 @@ import createUser from "../../../services/account/createUser.service";
 import randomCode from "../../../utils/randomCode";
 import activateAccountEmail from "../../../utils/emails/activateAccountEmail";
 
-export const createAccount = async (
-  req: Request,
-  res: Response
-): Promise<Response> => {
+export default async (req: Request, res: Response): Promise<Response> => {
   const { firstname, surname, username, email, dob, password } = req.body;
 
   try {

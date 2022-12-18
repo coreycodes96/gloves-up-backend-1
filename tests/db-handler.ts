@@ -1,3 +1,5 @@
+jest.setTimeout(30000);
+
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
 

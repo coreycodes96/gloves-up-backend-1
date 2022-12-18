@@ -1,6 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 export interface IUser {
+  _id?: mongoose.Types.ObjectId;
   firstname: string;
   surname: string;
   username: string;
@@ -9,6 +10,7 @@ export interface IUser {
   password: string;
   xp?: number;
   level?: number;
+  isActivated?: boolean;
   activationCode?: number;
   isNotifications?: boolean;
   notificationId?: string;
@@ -52,6 +54,10 @@ const userSchema = new Schema<IUser>(
     level: {
       type: Number,
       default: 1,
+    },
+    isActivated: {
+      type: Boolean,
+      default: false,
     },
     activationCode: {
       type: Number,

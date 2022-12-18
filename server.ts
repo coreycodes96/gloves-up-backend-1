@@ -33,6 +33,7 @@ const PORT = process.argv[3];
 
 //Starting the app
 app.listen(PORT, () => {
+  mongoose.set("strictQuery", false);
   mongoose.connect(process.env.MONGODB_URL);
   console.log(`You are connected on port ${PORT}`);
 });

@@ -8,6 +8,8 @@ export const connect = async () => {
   await mongoServer.start();
   const uri = mongoServer.getUri();
 
+  mongoose.set("strictQuery", false);
+
   await mongoose.connect(uri);
 };
 

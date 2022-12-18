@@ -1,4 +1,4 @@
-import { transport } from "./config.js";
+import { transport } from "./config";
 
 const activateAccountEmail = async (
   username: string,

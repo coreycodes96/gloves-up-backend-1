@@ -1,11 +1,10 @@
-import { connect, closeDatabase, clearDatabase } from "../db-handler";
+import { connect, closeDatabase, clearDatabase } from "../../db-handler";
 import request from "supertest";
-import app from "../../app";
-import createUser from "../../src/services/account/createUser.service";
-import activateUserAccount from "../../src/services/account/activateUserAccount.service";
-import { user1 } from "../data/users";
+import app from "../../../app";
+import createUser from "../../../src/services/account/createUser.service";
+import { user1 } from "../../data/users";
 
-describe("Activate Account", () => {
+describe("Create An Account", () => {
   //Connect
   beforeAll(async () => await connect());
 
@@ -15,7 +14,7 @@ describe("Activate Account", () => {
   //Close database
   afterAll(async () => await closeDatabase());
 
-  test("should activate users account", (done) => {
+  test("should create an account for the user", (done) => {
     createUser(user1, user1.activationCode)
       .then((res) => {
         expect(res).toHaveProperty("firstname");
@@ -36,13 +35,7 @@ describe("Activate Account", () => {
         expect(res).toHaveProperty("supporting");
         expect(res).toHaveProperty("createdAt");
         expect(res).toHaveProperty("updatedAt");
-
-        activateUserAccount(user1.email)
-          .then((res) => {
-            expect(res).toBe("Account has been successfully activated");
-            done();
-          })
-          .catch((error) => done(error));
+        done();
       })
       .catch((error) => done(error));
   });

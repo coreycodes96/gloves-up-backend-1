@@ -4,8 +4,9 @@ import app from "../../../../../app";
 import { user1 } from "../../../../data/users";
 import createUser from "../../../../../src/services/api/account/createAccount/createUser.service";
 import forgotPasswordAddCode from "../../../../../src/services/api/account/forgotPassword/forgotPasswordAddCode.service";
+import forgotPasswordCodeClear from "../../../../../src/services/api/account/forgotPassword/forgotPasswordCodeClear.service";
 
-describe("Request Forgot Password", () => {
+describe("Verify Forgot Password", () => {
   //Connect
   beforeAll(async () => await connect());
 
@@ -19,9 +20,13 @@ describe("Request Forgot Password", () => {
     createUser(user1, user1.activationCode)
       .then(() => {
         forgotPasswordAddCode(user1.email, 123456)
-          .then((res) => {
-            expect(res).toBe("forgot password code added");
-            done();
+          .then(() => {
+            forgotPasswordCodeClear(user1.email)
+              .then((res) => {
+                expect(res).toBe("forgot password code has been cleared");
+                done();
+              })
+              .catch((error) => done(error));
           })
           .catch((error) => done(error));
       })

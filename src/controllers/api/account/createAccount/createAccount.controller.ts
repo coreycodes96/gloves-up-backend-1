@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createAccountValidation } from "../../../../validation/api/account/createAccount.validation";
+import { createAccountValidation } from "../../../../validation/api/account/createAccount/createAccount.validation";
 import isUsername from "../../../../utils/isUsername";
 import isEmail from "../../../../utils/isEmail";
 import createUser from "../../../../services/api/account/createAccount/createUser.service";

@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { activateAccountValidation } from "../../../../validation/api/account/activateAccount/activateAccount.validation";
 import isEmail from "../../../../utils/isEmail";
 import getActivationCode from "../../../../utils/getActivationCode";
-import activateUserAccount from "../../../../services/api/account/activateUserAccount.service";
+import activateUserAccount from "../../../../services/api/account/activateAccount/activateUserAccount.service";
 
 export default async (req: Request, res: Response) => {
   const { email, code } = req.body;

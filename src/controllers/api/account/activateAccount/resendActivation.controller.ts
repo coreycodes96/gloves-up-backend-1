@@ -4,7 +4,7 @@ import isEmail from "../../../../utils/isEmail";
 import randomCode from "../../../../utils/randomCode";
 import activateAccountEmail from "../../../../utils/emails/activateAccountEmail";
 import getUsername from "../../../../utils/getUsername";
-import resendActivationCode from "../../../../services/api/account/resendActivationCode.service";
+import resendActivationCode from "../../../../services/api/account/activateAccount/resendActivationCode.service";
 
 export default async (req: Request, res: Response): Promise<Response> => {
   const { email } = req.body;

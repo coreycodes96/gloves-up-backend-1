@@ -18,7 +18,7 @@ export interface IUser {
   role?: number;
   fans?: [{ user: mongoose.Types.ObjectId; status: number }];
   supporting?: [{ user: mongoose.Types.ObjectId; status: number }];
-  forgotPasswordCode?: string | null;
+  forgotPasswordCode?: number | null;
 }
 
 const userSchema = new Schema<IUser>(
@@ -106,7 +106,7 @@ const userSchema = new Schema<IUser>(
       },
     ],
     forgotPasswordCode: {
-      type: String,
+      type: Number,
       default: null,
     },
   },

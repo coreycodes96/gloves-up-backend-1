@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { createAccountValidation } from "../../../../validation/api/account/createAccount.validation";
 import isUsername from "../../../../utils/isUsername";
 import isEmail from "../../../../utils/isEmail";
-import createUser from "../../../../services/api/account/createUser.service";
+import createUser from "../../../../services/api/account/createAccount/createUser.service";
 import randomCode from "../../../../utils/randomCode";
 import activateAccountEmail from "../../../../utils/emails/activateAccountEmail";
 

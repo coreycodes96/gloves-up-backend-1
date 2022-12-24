@@ -1,10 +1,12 @@
-import { connect, closeDatabase, clearDatabase } from "../../db-handler";
+import { connect, closeDatabase, clearDatabase } from "../../../db-handler";
 import request from "supertest";
-import app from "../../../app";
-import createUser from "../../../src/services/api/account/createUser.service";
-import { user1 } from "../../data/users";
+import app from "../../../../app";
+import createUser from "../../../../src/services/api/account/createAccount/createUser.service";
+import resendActivationCode from "../../../../src/services/api/account/activateAccount/resendActivationCode.service";
+import { user1 } from "../../../data/users";
+import randomCode from "../../../../src/utils/randomCode";
 
-describe("Create An Account", () => {
+describe("Resend Activation Code", () => {
   //Connect
   beforeAll(async () => await connect());
 
@@ -14,7 +16,7 @@ describe("Create An Account", () => {
   //Close database
   afterAll(async () => await closeDatabase());
 
-  test("should create an account for the user", (done) => {
+  test("should resend activation code to user", (done) => {
     createUser(user1, user1.activationCode)
       .then((res) => {
         expect(res).toHaveProperty("firstname");
@@ -35,7 +37,15 @@ describe("Create An Account", () => {
         expect(res).toHaveProperty("supporting");
         expect(res).toHaveProperty("createdAt");
         expect(res).toHaveProperty("updatedAt");
-        done();
+
+        const newCode = randomCode();
+
+        resendActivationCode(user1.email, newCode)
+          .then((res) => {
+            expect(res).toBe("New activation code saved");
+            done();
+          })
+          .catch((error) => done(error));
       })
       .catch((error) => done(error));
   });

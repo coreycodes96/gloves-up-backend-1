@@ -1,4 +1,4 @@
-import User, { IUser } from "../../models/user.model";
+import User, { IUser } from "../../../models/user.model";
 import bcrypt from "bcryptjs";
 
 export default async (data: IUser, code: number): Promise<object> => {

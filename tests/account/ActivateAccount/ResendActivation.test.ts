@@ -1,8 +1,8 @@
 import { connect, closeDatabase, clearDatabase } from "../../db-handler";
 import request from "supertest";
 import app from "../../../app";
-import createUser from "../../../src/services/account/createUser.service";
-import resendActivationCode from "../../../src/services/account/resendActivationCode.service";
+import createUser from "../../../src/services/api/account/createUser.service";
+import resendActivationCode from "../../../src/services/api/account/resendActivationCode.service";
 import { user1 } from "../../data/users";
 import randomCode from "../../../src/utils/randomCode";
 

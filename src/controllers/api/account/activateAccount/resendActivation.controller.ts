@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import { resendActivationValidation } from "../../../validation/account/resendActivation.validation";
-import isEmail from "../../../utils/isEmail";
-import randomCode from "../../../utils/randomCode";
-import activateAccountEmail from "../../../utils/emails/activateAccountEmail";
-import getUsername from "../../../utils/getUsername";
-import resendActivationCode from "../../../services/account/resendActivationCode.service";
+import { resendActivationValidation } from "../../../../validation/api/account/activateAccount/resendActivation.validation";
+import isEmail from "../../../../utils/isEmail";
+import randomCode from "../../../../utils/randomCode";
+import activateAccountEmail from "../../../../utils/emails/activateAccountEmail";
+import getUsername from "../../../../utils/getUsername";
+import resendActivationCode from "../../../../services/api/account/resendActivationCode.service";
 
 export default async (req: Request, res: Response): Promise<Response> => {
   const { email } = req.body;

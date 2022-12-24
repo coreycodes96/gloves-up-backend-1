@@ -1,4 +1,4 @@
-import User, { IUser } from "../../models/user.model";
+import User, { IUser } from "../../../models/user.model";
 
 export default async (email: string, code: number): Promise<string> => {
   try {

@@ -1,7 +1,7 @@
 import { connect, closeDatabase, clearDatabase } from "../../db-handler";
 import request from "supertest";
 import app from "../../../app";
-import createUser from "../../../src/services/account/createUser.service";
+import createUser from "../../../src/services/api/account/createUser.service";
 import { user1 } from "../../data/users";
 
 describe("Create An Account", () => {

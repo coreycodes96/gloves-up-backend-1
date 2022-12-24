@@ -1,8 +1,8 @@
 import { connect, closeDatabase, clearDatabase } from "../../db-handler";
 import request from "supertest";
 import app from "../../../app";
-import createUser from "../../../src/services/account/createUser.service";
-import activateUserAccount from "../../../src/services/account/activateUserAccount.service";
+import createUser from "../../../src/services/api/account/createUser.service";
+import activateUserAccount from "../../../src/services/api/account/activateUserAccount.service";
 import { user1 } from "../../data/users";
 
 describe("Activate Account", () => {

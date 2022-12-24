@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import { createAccountValidation } from "../../../validation/account/createAccount.validation";
-import isUsername from "../../../utils/isUsername";
-import isEmail from "../../../utils/isEmail";
-import createUser from "../../../services/account/createUser.service";
-import randomCode from "../../../utils/randomCode";
-import activateAccountEmail from "../../../utils/emails/activateAccountEmail";
+import { createAccountValidation } from "../../../../validation/api/account/createAccount.validation";
+import isUsername from "../../../../utils/isUsername";
+import isEmail from "../../../../utils/isEmail";
+import createUser from "../../../../services/api/account/createUser.service";
+import randomCode from "../../../../utils/randomCode";
+import activateAccountEmail from "../../../../utils/emails/activateAccountEmail";
 
 export default async (req: Request, res: Response): Promise<Response> => {
   const { firstname, surname, username, email, dob, password } = req.body;
@@ -46,7 +46,7 @@ export default async (req: Request, res: Response): Promise<Response> => {
     return res
       .status(201)
       .json({ message: "account has been successfully created" });
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
   }
 };

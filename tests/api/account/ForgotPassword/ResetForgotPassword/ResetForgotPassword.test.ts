@@ -2,7 +2,7 @@ import { connect, closeDatabase, clearDatabase } from "../../../../db-handler";
 import request from "supertest";
 import app from "../../../../../app";
 import { user1 } from "../../../../data/users";
-import createUser from "../../../../../src/services/api/account/createAccount/createUser.service";
+import storeUser from "../../../../../src/services/api/account/createAccount/storeUser.service";
 import changeUsersPassword from "../../../../../src/services/api/account/forgotPassword/changeUsersPassword.service";
 
 describe("Reset Forgot Password", () => {
@@ -16,7 +16,7 @@ describe("Reset Forgot Password", () => {
   afterAll(async () => await closeDatabase());
 
   test("should change the users password", (done) => {
-    createUser(user1, user1.activationCode)
+    storeUser(user1, user1.activationCode)
       .then(() => {
         changeUsersPassword(user1.email, "test1234")
           .then((res) => {

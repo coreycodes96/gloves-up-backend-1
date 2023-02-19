@@ -1,7 +1,7 @@
 import { connect, closeDatabase, clearDatabase } from "../../../db-handler";
 import request from "supertest";
 import app from "../../../../app";
-import createUser from "../../../../src/services/api/account/createAccount/createUser.service";
+import storeUser from "../../../../src/services/api/account/createAccount/storeUser.service";
 import { user1 } from "../../../data/users";
 
 describe("Create An Account", () => {
@@ -15,7 +15,7 @@ describe("Create An Account", () => {
   afterAll(async () => await closeDatabase());
 
   test("should create an account for the user", (done) => {
-    createUser(user1, user1.activationCode)
+    storeUser(user1, user1.activationCode)
       .then((res) => {
         expect(res).toHaveProperty("firstname");
         expect(res).toHaveProperty("surname");

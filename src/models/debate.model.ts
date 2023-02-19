@@ -1,8 +1,8 @@
 import mongoose, { Schema } from "mongoose";
 
-export interface DebateI {
-  sender: mongoose.Schema.Types.ObjectId;
-  receiver: mongoose.Schema.Types.ObjectId;
+export interface IDebate {
+  sender: mongoose.Types.ObjectId;
+  receiver: mongoose.Types.ObjectId;
   title: string;
   description: string;
   date: Date;
@@ -14,17 +14,23 @@ export interface DebateI {
   ];
 }
 
-const debateSchema = new Schema<DebateI>(
+export type DebateIOmit = Omit<IDebate, "viewers" | "status">;
+
+const debateSchema = new Schema<IDebate>(
   {
     sender: {
-      type: mongoose.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
     receiver: {
-      type: mongoose.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
     title: {
+      type: String,
+      required: true,
+    },
+    description: {
       type: String,
       required: true,
     },
@@ -34,11 +40,12 @@ const debateSchema = new Schema<DebateI>(
     },
     status: {
       type: Boolean,
-      required: true,
+      default: false,
     },
     viewers: [
       {
         user: mongoose.Types.ObjectId,
+        default: [],
       },
     ],
   },

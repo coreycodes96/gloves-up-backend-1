@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { createAccountValidation } from "../../../../validation/api/account/createAccount/createAccount.validation";
 import isUsername from "../../../../utils/isUsername";
 import isEmail from "../../../../utils/isEmail";
-import createUser from "../../../../services/api/account/createAccount/createUser.service";
+import storeUser from "../../../../services/api/account/createAccount/storeUser.service";
 import randomCode from "../../../../utils/randomCode";
 import activateAccountEmail from "../../../../utils/emails/activateAccountEmail";
 
@@ -29,7 +29,7 @@ export default async (req: Request, res: Response): Promise<Response> => {
 
     const code = randomCode();
 
-    await createUser(
+    await storeUser(
       {
         firstname,
         surname,

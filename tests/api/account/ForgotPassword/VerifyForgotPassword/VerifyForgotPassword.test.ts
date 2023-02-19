@@ -2,7 +2,7 @@ import { connect, closeDatabase, clearDatabase } from "../../../../db-handler";
 import request from "supertest";
 import app from "../../../../../app";
 import { user1 } from "../../../../data/users";
-import createUser from "../../../../../src/services/api/account/createAccount/createUser.service";
+import storeUser from "../../../../../src/services/api/account/createAccount/storeUser.service";
 import forgotPasswordAddCode from "../../../../../src/services/api/account/forgotPassword/forgotPasswordAddCode.service";
 import forgotPasswordCodeClear from "../../../../../src/services/api/account/forgotPassword/forgotPasswordCodeClear.service";
 
@@ -17,7 +17,7 @@ describe("Verify Forgot Password", () => {
   afterAll(async () => await closeDatabase());
 
   test("should add code to the forgotPasswordCode field", (done) => {
-    createUser(user1, user1.activationCode)
+    storeUser(user1, user1.activationCode)
       .then(() => {
         forgotPasswordAddCode(user1.email, 123456)
           .then(() => {

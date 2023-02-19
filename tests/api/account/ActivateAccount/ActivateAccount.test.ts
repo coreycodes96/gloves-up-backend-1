@@ -1,7 +1,7 @@
 import { connect, closeDatabase, clearDatabase } from "../../../db-handler";
 import request from "supertest";
 import app from "../../../../app";
-import createUser from "../../../../src/services/api/account/createAccount/createUser.service";
+import storeUser from "../../../../src/services/api/account/createAccount/storeUser.service";
 import activateUserAccount from "../../../../src/services/api/account/activateAccount/activateUserAccount.service";
 import { user1 } from "../../../data/users";
 
@@ -16,7 +16,7 @@ describe("Activate Account", () => {
   afterAll(async () => await closeDatabase());
 
   test("should activate users account", (done) => {
-    createUser(user1, user1.activationCode)
+    storeUser(user1, user1.activationCode)
       .then((res) => {
         expect(res).toHaveProperty("firstname");
         expect(res).toHaveProperty("surname");

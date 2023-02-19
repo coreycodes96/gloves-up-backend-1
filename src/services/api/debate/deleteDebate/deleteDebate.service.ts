@@ -1,4 +1,4 @@
-import Debate, { DebateIOmit } from "../../../../models/debate.model";
+import Debate from "../../../../models/debate.model";
 
 export default async (id: string): Promise<string> => {
   try {

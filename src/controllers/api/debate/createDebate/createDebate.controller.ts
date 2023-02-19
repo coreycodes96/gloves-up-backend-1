@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import storeDebate from "../../../services/api/debate/storeDebate/storeDebate.service";
-import { createDebateValidation } from "../../../validation/api/debate/createDebate/createDebate.validation";
+import storeDebate from "../../../../services/api/debate/storeDebate/storeDebate.service";
+import { createDebateValidation } from "../../../../validation/api/debate/createDebate/createDebate.validation";
 
 export default async (req: Request, res: Response): Promise<Response> => {
   try {
@@ -10,7 +10,7 @@ export default async (req: Request, res: Response): Promise<Response> => {
       return res.status(422).json(validation.data);
 
     //Store the invite
-    storeDebate(req.body);
+    await storeDebate(req.body);
 
     //Send a notification to the correct user
     return res.status(201).json({ message: "Invite has been sent" });

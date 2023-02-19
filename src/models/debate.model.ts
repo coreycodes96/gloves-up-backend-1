@@ -3,6 +3,7 @@ import mongoose, { Schema } from "mongoose";
 export type StatusType = "Default" | "Accepted" | "Declined";
 
 export interface IDebate {
+  _id?: mongoose.Types.ObjectId;
   sender: mongoose.Types.ObjectId;
   receiver: mongoose.Types.ObjectId;
   title: string;

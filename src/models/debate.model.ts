@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 export interface DebateI {
   sender: mongoose.Schema.Types.ObjectId;
@@ -6,7 +6,6 @@ export interface DebateI {
   title: string;
   description: string;
   date: Date;
-  time: Date;
   status: boolean;
   viewers: [
     {
@@ -30,10 +29,6 @@ const debateSchema = new Schema<DebateI>(
       required: true,
     },
     date: {
-      type: Date,
-      required: true,
-    },
-    time: {
       type: Date,
       required: true,
     },

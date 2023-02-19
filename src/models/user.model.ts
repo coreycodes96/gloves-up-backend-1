@@ -1,5 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
+export type RoleType = "User" | "Admin" | "LeadAdmin";
+
 export interface IUser {
   _id?: mongoose.Types.ObjectId;
   firstname: string;
@@ -15,7 +17,7 @@ export interface IUser {
   isNotifications?: boolean;
   notificationId?: string;
   warnings?: number;
-  role?: number;
+  role: RoleType;
   fans?: [{ user: mongoose.Types.ObjectId; status: number }];
   supporting?: [{ user: mongoose.Types.ObjectId; status: number }];
   forgotPasswordCode?: number | null;
@@ -76,8 +78,8 @@ const userSchema = new Schema<IUser>(
       default: 0,
     },
     role: {
-      type: Number,
-      default: 0, //0 = User | 1 = Admin | 2 = LeadAdmin
+      type: mongoose.Schema.Types.Mixed,
+      default: "User",
     },
     fans: [
       {

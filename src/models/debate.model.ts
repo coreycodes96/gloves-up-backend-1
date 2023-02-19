@@ -1,12 +1,14 @@
 import mongoose, { Schema } from "mongoose";
 
+export type StatusType = "Default" | "Accepted" | "Declined";
+
 export interface IDebate {
   sender: mongoose.Types.ObjectId;
   receiver: mongoose.Types.ObjectId;
   title: string;
   description: string;
   date: Date;
-  status: boolean;
+  status: StatusType;
   viewers: [
     {
       user: mongoose.Types.ObjectId;
@@ -39,8 +41,8 @@ const debateSchema = new Schema<IDebate>(
       required: true,
     },
     status: {
-      type: Boolean,
-      default: false,
+      type: mongoose.Schema.Types.Mixed,
+      default: "Default",
     },
     viewers: [
       {

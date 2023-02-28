@@ -11,8 +11,6 @@ const io = new Server(httpServer, {
   },
 });
 
-console.log(new Date().getTime());
-
 //Start socket.io
 io.on("connection", (socket) => {
   const handshake = socket.handshake.query;

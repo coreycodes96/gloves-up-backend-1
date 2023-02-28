@@ -23,6 +23,8 @@ export interface IUser {
   forgotPasswordCode?: number | null;
 }
 
+export type IUserOmit = Omit<IUser, "role">;
+
 const userSchema = new Schema<IUser>(
   {
     firstname: {
